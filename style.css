@@ -1,0 +1,360 @@
+@font-face {
+    font-family: 'Fixedsys'; /* A name to use later */
+    src: url('fonts/Fixedsys500c.otf') format('opentype'); /* Path to your .otf file */
+}
+
+
+h1{
+    font-size: 80px;
+}
+body{
+    margin: 0;
+    font-family:'Fixedsys';
+    background-image: url('image/bg2.png');
+    background-size:auto; /* Cover the entire viewport */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-attachment:fixed; /* Optional: Fixes the background */
+}
+.container{
+    width: 900px;
+    margin: auto;
+    max-width: 130vw;
+    text-align: center;
+    padding-top: 30px;
+    transition: transform .5s;
+}
+
+.top-bar {
+    position: fixed;
+    background-color: #f85b82 ;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    color: white;
+    text-align: center;
+    z-index: 1000; /* Ensure it stays on top */
+    filter: drop-shadow(10px 10px 10px #0009);
+}
+
+.scrolling-text {
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+    animation: scroll-left 10s linear infinite; /* Adjust timing as needed */
+}
+
+.header {
+    width: 100%;
+    background-color: var(--body-color);
+    position: fixed;
+    margin-top: 50px;
+    top: 100px;
+    left: 0;
+    z-index: var(--z-fixed);
+    transition: .4s; /*For animation dark mode*/
+  }
+.main {
+    overflow: hidden;
+  }
+.grid {
+    display: flex; /* Enable Flexbox */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    gap: 20px; /* Optional: Adds some space between the elements */
+  }
+/*=============== HOME ===============*/
+.home__container {
+    padding-top: 1.5rem;
+    row-gap: 1.5rem;
+  }
+  
+  .home__img {
+    width: 420px;
+    justify-self: center;
+  }
+  
+  .home__data {
+    text-align: center;
+  }
+  
+  .home__title {
+    font-size: var(--biggest-font-size);
+    line-height: 140%;
+    margin-bottom: var(--mb-0-5);
+  }
+  
+  .home__description {
+    font-size: var(--small-font-size);
+    padding: 0 2rem;
+    margin-bottom: var(--mb-2-5);
+  }
+svg{
+    width: 30px;
+}
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+.icon-cart{
+    position: fixed;
+    right: 2%;
+    bottom: 5%;
+}
+.icon-cart img {
+    width: 12vw;  /* Adjust the width as needed */
+    height: auto; /* This ensures the aspect ratio is maintained */
+}
+.icon-cart span {
+    position: absolute;
+    font-size:xx-large;
+    background-color: rgb(235, 38, 78);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: #fff;
+    top: 10%;
+    right: 70px;
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Add transition for smooth effect */
+    
+}
+
+.icon-cart:hover span {
+    transform: scale(1.5); /* Enlarge the span on hover */
+    background-color:rgba(222, 56, 89, 0.8);
+}
+.title{
+    font-size: 100px;
+}
+.listProduct .item img{
+    
+    filter: drop-shadow(0 50px 20px #0009);
+}
+/*.listProduct{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}*/
+
+.listProduct {
+    column-count: 2; /* Number of columns */
+    column-gap: 20px;
+}
+/*.listProduct .item{
+    background-color: rgb(203, 217, 196);
+    padding: 20px;
+    border-radius: 20px;
+}*/
+
+.listProduct .item {
+    break-inside: avoid-column; /* Prevent items from splitting across columns */
+    margin-bottom: 200px; /* Space between items */
+}
+.listProduct .item h2{
+    font-weight: 400px;
+    font-size:4vw;
+    margin: 4%;
+}
+.listProduct .item .price{
+    letter-spacing: 7px;
+    font-size:xx-large;
+    margin-top: 5%;
+    color: rgb(31, 32, 30);
+}
+.listProduct .item button{
+    background-color: rgb(21, 21, 30);
+    color: #eee;
+    border: none;
+    width: 30%;
+    padding: 5px 10px;
+    margin-top: 10px;
+    border-radius: 20px;
+}
+.listProduct .item button:hover {
+    background-color: #eee; /* Reverse background color */
+    color: rgb(21, 21, 30); /* Reverse text color */
+    cursor:grab;
+}
+.listProduct .item .image-container {
+    position: relative;
+    display: inline-block; /* Makes the container fit the content */
+}
+
+.listProduct .item img {
+    display: block; /* Remove default inline spacing */
+
+    width: 80%; /* Adjust as needed */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.listProduct .item .product-paragraph {
+    position: absolute;
+    width: 12vw;
+    text-align:left;
+    font-family:Helvetica, sans-serif;
+    font-size: 14px;
+    bottom: 10px; /* Distance from the bottom */
+    right: 10px; /* Distance from the right */
+    color: rgb(233, 233, 246); /* Text color */
+    background-color: rgba(193, 48, 123, 0.4); /* Semi-transparent background */
+    padding: 6%; /* Padding around the text */
+    border-radius: 5px; /* Optional: for rounded corners */
+}
+
+/* cart */
+.cartTab{
+    width: 400px;
+    background-color: #b8a4fa;
+    color: rgb(31, 40, 32);
+    position: fixed;
+    top: 0;
+    right: -400px;
+    bottom: 0;
+    display: grid;
+    grid-template-rows: 70px 1fr 70px;
+    transition: .5s;
+}
+body.showCart .cartTab{
+    right: 0;
+}
+body.showCart .container{
+    transform: translateX(-250px);
+}
+.cartTab h1{
+    color: antiquewhite;
+    padding: 20px;
+    margin: 0;
+    font-weight: 300;
+}
+.cartTab .btn{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.cartTab .close{
+    background-image: url('image/money.png');
+}
+.listCart .item img{
+    width: 100%;
+}
+.listCart .item{
+    display: grid;
+    grid-template-columns: 70px 150px 50px 1fr;
+    gap: 10px;
+    text-align: center;
+    align-items: center;
+}
+.listCart .quantity span{
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-color: #ebe4e4;
+    border-radius: 50%;
+    color: #555;
+    cursor: pointer;
+}
+
+
+.listCart .totalPrice{
+    color: rgb(205, 235, 73);
+}
+.listCart .quantity span:nth-child(2){
+    background-color: transparent;
+    color: rgb(28, 36, 30);
+    cursor: auto;
+}
+.listCart .item:nth-child(even){
+    background-color: rgba(238, 238, 238, 0.3);
+}
+.listCart{
+    overflow: auto;
+}
+.listCart::-webkit-scrollbar{
+    width: 0;
+}
+
+.product-popup {
+    position: absolute;
+    background-image:url('image/bg.jpg');
+    border: 1px solid #ddd;
+    padding: 100px;
+    border-radius: 5px;
+    display: none; /* Initially hidden */
+    z-index: 100; /* Ensure it's above other elements */
+    /* Add more styling as needed */
+}
+
+
+.cartTab .btn {
+    position: relative;
+    /* Other styling for your div */
+}
+
+.cartTab .btn button {
+    transition: transform 0.3s ease; /* Animation effect */
+    /* Add other button styling here */
+}
+
+.cartTab .btn button:hover {
+    transform: scale(1.3); /* Enlarge the button on hover */
+}
+
+.cartTab .btn::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: url('image/money.png'); /* Path to your image */
+    background-size: cover; /* Cover the entire area of the pseudo-element */
+    background-repeat: no-repeat;
+    height: 100px; /* Height of the image area */
+    z-index: -1; /* Ensure it's behind the buttons */
+}
+
+#checkoutImage {
+    position: fixed; /* Fixed position relative to the viewport */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(45%, -50%); /* Adjust for the size of the image */
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s;
+    width:30vw; /* Or your desired width */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 90%; /* Optional, for responsiveness */
+    max-height: 90vh; /* Optional, to ensure it fits in the viewport */
+}
+
+
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+
+
+@media only screen and (max-width: 992px) {
+    .listProduct{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
+
+/* mobile */
+@media only screen and (max-width: 768px) {
+    .listProduct{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

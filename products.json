@@ -1,0 +1,57 @@
+[
+    {
+        "id": 1,
+        "name":" Too Occupied To Be single",
+        "price": 200,
+        "image": "image/hand0.png",
+        "image_activated": "image/hand.png",
+        "brief":"The ultimate solution for the modern transhuman with a heart as expansive as their ambitions. Are you a trailblazer in love, juggling multiple relationships and commitments? Do you find yourself running out of fingers to display the symbols of your affection? Worry no more! Our Extra Hand is here to ensure you never have to compromise on showcasing your love, this hand is more than just an extension of your body; it's an extension of your heart."
+    },
+    {
+        "id": 2,
+        "name":" Life Lock",
+        "price": 300,
+        "image": "image/heart0.png",
+        "image_activated": "image/heart.png"
+        
+    },
+    {
+        "id": 3,
+        "name":" Lamb Layer",
+        "price": 290,
+        "image": "image/sheep0.png",
+        "image_activated": "image/sheep.png"
+        
+    },
+    
+    {
+        "id": 5,
+        "name":" Best Friend Forever Glue",
+        "price": 250,
+        "image": "image/glue0.png",
+        "image_activated": "image/glue.png"
+        
+    },
+    {
+        "id": 6,
+        "name":" Genius Genes",
+        "price": 200,
+        "image": "image/gene0.png",
+        "image_activated": "image/gene.png"
+    },
+    {
+        "id": 7,
+        "name":"Greener Chloroplasts",
+        "price": 200,
+        "image": "image/Chloroplasts0.jpg",
+        "image_activated": "image/Chloroplasts.jpg"
+    },
+    {
+        "id": 4,
+        "name":" LD04 LOUNGE CHAIR",
+        "price": 200,
+        "image": "image/antenna0.png",
+        "image_activated": "image/antenna.png"
+    }
+
+]
