@@ -7,6 +7,14 @@ let closeCart = document.querySelector('.close');
 let products = [];
 let cart = [];
 
+let ws = new WebSocket('wss://anthropedia-web-680e6a971c1a.herokuapp.com:443');
+
+// Array to hold the current prompts
+let prompts = [];
+
+
+
+
 
 iconCart.addEventListener('click', () => {
     body.classList.toggle('showCart');
@@ -28,7 +36,7 @@ closeCart.addEventListener('click', () => {
                 newProduct.innerHTML = 
                 `<div class="image-container">
                     <img src="${product.image}" alt="${product.name}">
-                    <p class="product-paragraph">${product.brief}</p>
+                    
                 </div>   
                 <h2>${product.name}</h2>
                 <div class="price">$${product.price}</div>
@@ -65,27 +73,22 @@ closeCart.addEventListener('click', () => {
 
         // Set the content of the pop-up
         popup.innerHTML = `
-            <h3>${product.name}</h3>
-            <p>${product.info}</p>
-            <p>Price: $${product.price}</p>
+        <div class="image-container">
+            <img src="${product.info}"
+            </div> 
         `;
 
-        // Position the pop-up near the image
-        const rect = imgElement.getBoundingClientRect();
-        popup.style.left = `${rect.left + window.scrollX}px`;
-        popup.style.top = `${rect.bottom + window.scrollY}px`;
+         // Get the position of the image element
+    const rect = imgElement.getBoundingClientRect();
 
-        // Show the pop-up
-        popup.style.display = 'block';
+    // Position the pop-up at the top left of the image
+    popup.style.left = `${0.8*rect.right + window.scrollX}px`;
+    popup.style.top = `${rect.top + window.scrollY}px`;
+
+    // Show the pop-up
+    popup.style.display = 'block'
     }
 
-    // Function to hide product information
-    const hideProductInfo = () => {
-        const popup = document.querySelector('.product-popup');
-        if (popup) {
-            popup.style.display = 'none';
-        }
-    }
 
 
     listProductHTML.addEventListener('click', (event) => {
@@ -183,7 +186,7 @@ const changeQuantityCart = (product_id, type) => {
 }
 
 document.getElementById('checkOutButton').addEventListener('click', () => {
-    clearCart();
+    //clearCart();
 });
 
 const clearCart = () => {
@@ -200,6 +203,8 @@ const clearCart = () => {
     //alert('Thank you for your purchase!');
     //window.location.href = 'index.html'; // Redirect to a thank you page
 }
+
+
 
 document.getElementById('checkOutButton').addEventListener('click', () => {
     // Show and fade in the image
@@ -219,8 +224,68 @@ document.getElementById('checkOutButton').addEventListener('click', () => {
         }, 200); // This 500ms should match the CSS transition time
     }, 1500); // 2000ms for the image to stay visible
 
+    // Generate the checkout prompt and send it to the WebSocket server
+    let checkoutTotals = generateCheckoutTotal();
+    ws.send(JSON.stringify(checkoutTotals));
+
     clearCart(); // Call the clearCart function or other checkout logic
 });
+
+const generateCheckoutTotal = () => {
+    let checkoutTotals = {};
+    let grandTotal = 0;
+
+    cart.forEach(item => {
+        let product = products.find(p => p.id.toString() === item.product_id);
+        if (product) {
+            let totalForThisProduct = product.price * item.quantity;
+            checkoutTotals[product.name] = (checkoutTotals[product.name] || 0) + totalForThisProduct;
+            grandTotal += totalForThisProduct;
+        }
+    });
+
+    checkoutTotals['Total'] = grandTotal;
+    return checkoutTotals;
+}
+
+
+
+
+ws.addEventListener('open', (event) => {
+    console.log('Socket connection open');
+    // alert('Successfully connected to socket server 🎉');
+    ws.send('pong');
+  });
+  
+  ws.addEventListener('message', (message) => {
+    if (message && message.data) {
+      if (message.data === "ping") {
+        console.log("got ping");
+        ws.send("pong");
+        return;
+      }
+      let data = JSON.parse(message.data);
+      if (data) {
+        console.log("got data", data);
+      }
+    }
+    console.log("message", message)
+  });
+  
+  ws.addEventListener('error', (error) => {
+      console.error('Error in the connection', error);
+      alert('error connecting socket server', error);
+  });
+  
+  ws.addEventListener('close', (event) => {
+      console.log('Socket connection closed');
+      alert('closing socket server');
+  });
+  
+  
+
+
+  
 
 
 const initApp = () => {
