@@ -14,7 +14,7 @@ body{
     margin: 0;
     font-family:'Fixedsys';
     background-image: url('image/bg2.png');
-    background-size:auto; /* Cover the entire viewport */
+    background-size:cover; /* Cover the entire viewport */
     background-repeat: no-repeat; /* Prevent the image from repeating */
     background-attachment:fixed; /* Optional: Fixes the background */
 }
@@ -82,20 +82,22 @@ body{
   }
   
   .home__title {
-    color:#f85b82;
+    color:rgb(203, 216, 219);
     font-size: var(--biggest-font-size);
     line-height: 140%;
-    margin-bottom: var(--mb-0-5);
+    margin-bottom: var(--mb-0-20);
+    text-align: left;
   }
   
   .home__description {
     font-size:medium;
-    width: 60%;
+    width: 40%;
     padding: 0 2rem;
-    color:rgb(26, 51, 179);
+    color:rgb(14, 18, 38,0.8);
     margin-bottom: var(--mb-2-5);
     padding: 20px 0;
     text-align: left; 
+    margin-bottom:10%;
   }
 svg{
     width: 30px;
@@ -137,7 +139,15 @@ header{
     background-color:rgba(222, 56, 89, 0.8);
 }
 .title{
-    font-size: 120px;
+    font-size: 100px;
+    text-align: left;
+
+}
+
+.title_image{
+    margin-top: 6%;
+    margin-left: 10%;
+    width: 80%;
 }
 .listProduct .item img{
     
